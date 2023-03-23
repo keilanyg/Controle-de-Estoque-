@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{%block titulo %}
+<title>Cadastro de Vendeores</title>
+{%endblock%}
+
+
+{% block 'body' %}
+<div class="container">
+    <p><a>Menu</a></p> 
+
+    {% if messages %}
+    <br>
+    {% for message in messages %}
+    <div class="alert {{message.tags}}">{{message}}</div>
+    {% endfor %}
+    {% endif %}
+    <form action="{% url 'cadastrar_vendedor' %}" method="POST">{% csrf_token %}
+        <br>
+        <label>Nome</label>
+        <input type="text" placeholder="Digite seu Nome..." name="nome" class="form-control">
+        <br>
+        <label>Sobrenome</label>
+        <input type="text" placeholder="Digite seu Sobrenome..." name="sobrenome" class="form-control">
+        <br>
+        <label>E-mail</label>
+        <input type="email" placeholder="Digite seu E-mail..." name="email" class="form-control">
+        <br>
+        <label>Senha</label>
+        <input type="password" placeholder="Digite sua senha..." name="senha" class="form-control">
+        <br>
+        <input type="submit" class="btn btn-success">
+    </form>
+        <p><a href="{% url 'vendedores_cadastrados' %}">Vendedores cadastrados</a></p>
+
+    <hr class="bg-hr">
+
+
+
+
+</div>
+{% endblock %}

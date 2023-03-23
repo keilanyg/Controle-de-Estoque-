@@ -1,0 +1,33 @@
+
+{%load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+{%block titulo %}
+<title>Login</title>
+{%endblock%}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+{% block 'body' %}
+<div id="login-box">
+    <div class="left">
+        <img src="{% static 'img/bannerlogin.png' %}" width="140%">
+    </div>
+    <div class="container right">
+        <form action="{% url 'login' %}" method="POST" class="from-group">{% csrf_token %}
+            <h1>Login</h1>
+            <label style="color: white;">E-mail</label><br>
+            <input type="email" placeholder="Digite seu E-mail..." name="email" class="form-control">
+            <label style="color: white;">Senha</label>
+            <input type="password" placeholder="Digite sua Senha..." name="senha" class="form-control">
+            <input type="submit" class="btn btn-success">
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+</html>
