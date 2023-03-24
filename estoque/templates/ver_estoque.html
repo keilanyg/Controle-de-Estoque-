@@ -15,35 +15,52 @@
 
 {% block 'body' %}
 
-<div class="container">
+<div class="apresentacao" style="display: flex; justify-content: space-between;">
+    
+    <div class="titulo" style="width: 70%; height: 50%; margin-top: 100px; padding: 40px;  background-color: #F5730D; 
+    border-radius: 0px 30px 30px 0; color: white;
+    ">
+        <h1 style="font-size: 60px;">Estoque</h1>
+        <h4>Potencializar a visão estratégica do gestor</h4>
+    </div>
 
+    <div>
+        <img src="{% static 'img/bannerestoque.png' %}" width= "60%" >
+
+    </div>
+
+    
+
+</div>
+
+<div class="container">
     <form action="{% url 'ver_estoque' %}" metho="GET">
 
-        <div class="row" style="margin: 70px 0;">
-            <div>
+        <div class="row" style="margin: 10px 0 70px 0;">
+            <div  class="col-md">
                 <input class="form-control" type="text" name="nome" placeholder="Nome">
-            </div>
+            </div><br>
 
-            <div class="col-sm">
+            <div class="col-md">
                 <select class="form-control" name="categoria">
                     <option value="">Todas as Categorias</option>
                     {% for categoria in categorias %}
                     <option value="{{categoria.id}}">{{categoria.titulo}}</option>
                     {% endfor %}
                 </select>
-            </div>
+            </div><br>
 
-            <div class="col-sm">
+            <div class="col-md">
                 <input class="form-control" type="text" name="preco_min" placeholder="Preço minímo">
             </div>
 
 
-            <div class="col-sm">
+            <div class="col-md">
                 <input class="form-control" type="text" name="preco_max" placeholder="Preço maxímo">
             </div>
 
-            <div class="col-sm">
-                <input type="submit" value="Filtrar" class="btn btn-success">
+            <div class="col-md">
+                <input type="submit" value="Filtrar" class="btn btn-success" style="background-color: #F5730D; border: none; margin-left: 20px;">
             </div>
         </div>
 
@@ -51,11 +68,11 @@
 </div>
 
 
-<div class="listar_produtos">
+<div class="container listar_produtos">
     <div class=" container row">
         {% for produto in produtos %}
         <div class="col-md">
-            <div style="background-color: #0f0f0f; width: 18rem;" class="card" style="width: 18rem;">
+            <div class="card" style="width: 15rem; height: 25rem; border: solid 2px #d9d9d9; ">
                 {% if produto|get_first_image %}
                 <img width="100%" class="card-img-top" src="{{produto|get_first_image}}" alt="Card image cap">
                 {% endif %}
