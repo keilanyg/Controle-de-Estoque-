@@ -1,67 +1,76 @@
 {% extends 'base.html' %}
 {% load filters %}
+{%load static %}
 
-{%block titulo %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/verestoque.css' %}">
+{% endblock %}
+
+{% block titulo %}
 <title>Estoque</title>
-{%endblock%}
+{% endblock %}
+
+
 
 {% block 'body' %}
 
 <div class="container">
-    <p><a>Menu</a></p>
 
     <form action="{% url 'ver_estoque' %}" metho="GET">
-        <div class="row">
-            <div class="col-md">
+
+        <div class="row" style="margin: 70px 0;">
+            <div>
                 <input class="form-control" type="text" name="nome" placeholder="Nome">
             </div>
-        </div>
 
-        <div class="col-md">
-            <select class="form-control" name="categoria">
-                <option value="">Todas as Categorias</option>
-                {% for categoria in categorias %}
-                <option value="{{categoria.id}}">{{categoria.titulo}}</option>
-                {% endfor %}
-            </select>
-        </div>
+            <div class="col-sm">
+                <select class="form-control" name="categoria">
+                    <option value="">Todas as Categorias</option>
+                    {% for categoria in categorias %}
+                    <option value="{{categoria.id}}">{{categoria.titulo}}</option>
+                    {% endfor %}
+                </select>
+            </div>
 
-        <div class="col-md">
-            <input class="form-control" type="text" name="preco_min" placeholder="Preço minímo">
-        </div>
+            <div class="col-sm">
+                <input class="form-control" type="text" name="preco_min" placeholder="Preço minímo">
+            </div>
 
 
-        <div class="col-md">
-            <input class="form-control" type="text" name="preco_max" placeholder="Preço maxímo">
-        </div>
+            <div class="col-sm">
+                <input class="form-control" type="text" name="preco_max" placeholder="Preço maxímo">
+            </div>
 
-        <div class="col-md">
-            <input type="submit" value="Filtrar" class="btn btn-success">
+            <div class="col-sm">
+                <input type="submit" value="Filtrar" class="btn btn-success">
+            </div>
         </div>
 
     </form>
+</div>
 
 
-    <div class="listar_produtos">
-        <div class=" container row">
-            {% for produto in produtos %}
-            <div class="col-md">
-                <div style="background-color: #0f0f0f; width: 18rem;" class="card" style="width: 18rem;">
-                    {% if produto|get_first_image %}
-                    <img width="100%" class="card-img-top" src="{{produto|get_first_image}}" alt="Card image cap">
-                    {% endif %}
-                    <div class="card-body">
-                        <h5 class="card-title">{{produto.nome}}</h5>
-                        <span class="badge badge-info">{{produto.categoria}}</span>
-                        <br>
-                        <br>
-                        <a href="{% url 'produto' produto.slug %}" class="btn btn-primary">Acessar</a>
-                    </div>
+<div class="listar_produtos">
+    <div class=" container row">
+        {% for produto in produtos %}
+        <div class="col-md">
+            <div style="background-color: #0f0f0f; width: 18rem;" class="card" style="width: 18rem;">
+                {% if produto|get_first_image %}
+                <img width="100%" class="card-img-top" src="{{produto|get_first_image}}" alt="Card image cap">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{produto.nome}}</h5>
+                    <span class="badge badge-info">{{produto.categoria}}</span>
+                    <br>
+                    <br>
+                    <a href="{% url 'produto' produto.slug %}" class="btn btn-primary">Acessar</a>
                 </div>
-                <br>
             </div>
-            {% endfor %}
+            <br>
         </div>
+        {% endfor %}
     </div>
+</div>
 </div>
 {% endblock %}

@@ -23,14 +23,18 @@ def cadastrar_vendedor(request):
         user = Users.objects.filter(email=email)
 
         if user.exists():
-            return HttpResponse("Email ja existe")
+            messages.add_message(request, messages.ERROR,
+                         'Esse e-mail já existe')
+            return redirect(reverse('cadastrar_vendedor'))
 
         user = Users.objects.create_user(
             username=email, email=email,
             password=senha, first_name=nome,
             last_name=sobrenome, cargo="V")
 
-        return HttpResponse("Conta criada")
+        messages.add_message(request, messages.SUCCESS,
+                         'Vendedor cadastrado com sucesso')
+        return redirect(reverse('cadastrar_vendedor'))
 
 
 @has_permission_decorator('cadastrar_vendedor')
@@ -42,7 +46,7 @@ def vendedores_cadastrados(request):
 def login(request):
     if request.method == "GET":
         if request.user.is_authenticated:
-            return redirect(reverse('plataforma')) #plataforma = menu
+            return redirect(reverse('ver_estoque'))
         return render(request, 'login.html')
     elif request.method == "POST":
         login = request.POST.get('email')
@@ -51,11 +55,12 @@ def login(request):
         user = auth.authenticate(username=login, password=senha)
 
         if not user:
-            # TODO: Redirecionar com mensagem de erro
-            return HttpResponse('Usuário inválido')
+            messages.add_message(request, messages.ERROR,
+                         'Usuário invalido')
+            return redirect(reverse('login'))
 
         auth.login(request, user)
-        return render(request, 'add_produto.html')#menu
+        return render(request, 'ver_estoque.html')
 
 
 def logout(request):
@@ -69,6 +74,6 @@ def excluir_usuario(request, id):
     vendedor.delete()
     messages.add_message(request, messages.SUCCESS,
                          'Vendedor excluído com sucesso')
-    return redirect(reverse('cadastrar_vendedor'))
+    return redirect(reverse('vendedores_cadastrados'))
 
 
