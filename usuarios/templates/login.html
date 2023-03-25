@@ -22,7 +22,7 @@
     <div class="alert {{message.tags}}">{{message}}</div>
     {% endfor %}
     {% endif %}
-    <div class="container right">
+    <div class="right">
         <form action="{% url 'login' %}" method="POST" class="from-group">{% csrf_token %}
             <h1>Login</h1><br>
             <label style="color: white;">E-mail</label><br>

@@ -12,32 +12,28 @@
 {% endblock %}
 
 
-
 {% block 'body' %}
 
 <div class="apresentacao" style="display: flex; justify-content: space-between;">
-    
-    <div class="titulo" style="width: 70%; height: 50%; margin-top: 100px; padding: 40px;  background-color: #F5730D; 
-    border-radius: 0px 30px 30px 0; color: white;
+
+    <div class="titulo" style="position: absolute; width: 23%; margin: 200px 0 0 400px; padding: 35px;  background-color: #F5730D; 
+    border-radius: 70px 0 70px 0; color: white;
     ">
-        <h1 style="font-size: 60px;">Estoque</h1>
-        <h4>Potencializar a visão estratégica do gestor</h4>
+        <h1 style="font-size: 50px;">Estoque</h1>
+        <h5>Potencializar a visão estratégica do gestor</h5>
     </div>
 
-    <div>
-        <img src="{% static 'img/bannerestoque.png' %}" width= "60%" >
-
+    <div style="margin: 30px 10px 50px 700px;">
+        <img style="border-radius: 140px 2px 140px 2px;" src="{% static 'img/bannerestoque.jpg' %}" width="65%">
     </div>
-
-    
 
 </div>
 
 <div class="container">
     <form action="{% url 'ver_estoque' %}" metho="GET">
 
-        <div class="row" style="margin: 10px 0 70px 0;">
-            <div  class="col-md">
+        <div class="row" style="margin: 0 0 35px 0; ">
+            <div class="col-md">
                 <input class="form-control" type="text" name="nome" placeholder="Nome">
             </div><br>
 
@@ -60,10 +56,10 @@
             </div>
 
             <div class="col-md">
-                <input type="submit" value="Filtrar" class="btn btn-success" style="background-color: #F5730D; border: none; margin-left: 20px;">
+                <input type="submit" value="Filtrar" class="btn btn-success"
+                    style="background-color: #F5730D; border: none;">
             </div>
         </div>
-
     </form>
 </div>
 
@@ -81,7 +77,7 @@
                     <span class="badge badge-info">{{produto.categoria}}</span>
                     <br>
                     <br>
-                    <a href="{% url 'produto' produto.slug %}" class="btn btn-primary">Acessar</a>
+                    <a href="{% url 'produto' produto.slug %}" class="btn btn-primary" style="background-color: #F5730D; border: none;">Acessar</a>
                 </div>
             </div>
             <br>

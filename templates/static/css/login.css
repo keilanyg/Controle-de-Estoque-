@@ -10,35 +10,29 @@ h1{
     font-size: 50px
 }
 .left{
-  -webkit-filter: blur(1px);
-  -moz-filter: blur(1px);
-  -o-filter: blur(1px);
-  -ms-filter: blur(1px);
-  filter: blur(1px);
+  filter: blur(2px);
 }
 
 .right {
-  width: 55%;
-  height: 65%; 
   position: absolute;
-  top: 16%;
-  right: 20%;
-  left: 23% ;
-  box-sizing: border-box;
-  background-size: cover;
-  background-position: center;
+  top: 25%;
+  left: 38%;
+  right: 40%;
   background-color: #000000;
   border-radius: 10px ;
   opacity: 80%;
+  padding: 90px 0;
+  width: 25%;
 }
 form{
-  margin: 120px 370px;
+  margin-left: 120px;
   align-items: center;
-  font-size: 16px;
+  font-size: 20px;
 }
 input{
-  width: 200px;
-  height: 42px;
+  font-size: 20px;
+  width: 270px;
+  height: 50px;
   border: none;
   border-radius: 10px;
   color: #000000;
@@ -48,9 +42,9 @@ input{
 }
 
 .btn {
-  margin-top: 28px;
-  width: 200px;
-  height: 42px;
+  margin-top: 35px;
+  width: 270px;
+  height: 50px;
   background: #F5730D;
   border: none;
   border-radius: 10px;
