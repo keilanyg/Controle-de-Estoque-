@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
         integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'usuarios/css/css.css' %}">
     {% block 'head' %}
     {% endblock %}
 
@@ -16,48 +15,54 @@
     {%endblock%}
 </head>
 
+{% block 'nav' %}
+<nav class="navbar navbar-expand"
+    style="margin-right:1px; display: flex; background-color: #F5730D; justify-content: space-around;">
+    <div>
+        <img src="{% static 'img/Logo.png' %}" width="40%">
+    </div>
+
+    <div class="container">
+        <div class=" navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav w-100 align-items-center">
+                <li class="nav-item ml-auto">
+                    <a class="nav-link" style="color: white; font-weight: 600;" ; aria-current="page"
+                        href="{% url 'add_produto' %}">Cadastrar Produto</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="color: white; font-weight: 600;" ;
+                        href="{% url 'cadastrar_vendedor' %}">Cadastrar Vendedor</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="color: white; font-weight: 600;" ;
+                        href="{% url 'vendedores_cadastrados' %}">Vendedores Cadastrados</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="color: white; font-weight: 600;" ; href="{% url 'ver_estoque' %}">Ver
+                        estoque</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="color: white; font-weight: 600;" ; href="{% url 'sair' %}">Sair</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+{% endblock %}
+
 <body class="fundo">
 
-    {% block 'nav' %}
-    <nav class="navbar navbar-expand" style="margin-right:1px; display: flex; background-color: #F5730D; justify-content: space-around;">
-        <div>
-            <img src="{% static 'img/Logo.png' %}" width="40%">
-        </div>
-
-        <div class="container">
-            <div class=" navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav w-100 align-items-center" >
-                    <li class="nav-item ml-auto">
-                        <a class="nav-link" style="color: white; font-weight: 600;";  aria-current="page" href="{% url 'add_produto' %}">Cadastrar Produto</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" style="color: white; font-weight: 600;"; href="{% url 'cadastrar_vendedor' %}">Cadastrar Vendedor</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" style="color: white; font-weight: 600;"; href="{% url 'vendedores_cadastrados' %}">Vendedores Cadastrados</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" style="color: white; font-weight: 600;"; href="{% url 'ver_estoque' %}">Ver estoque</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" style="color: white; font-weight: 600;"; href="{% url 'sair' %}">Sair</a>
-                    </li> 
-                </ul>
-            </div>
-        </div>
-    </nav>
-    {% endblock %}
-    
     {% block 'body' %}
 
     {% endblock %}
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
-        crossorigin="anonymous"></script>
 </body>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+    crossorigin="anonymous"></script>
 
 </html>
