@@ -9,5 +9,6 @@ class Gerente(AbstractUserRole):
     
 class Vendedor(AbstractUserRole):
     available_permissions = {
-        'realizar_venda' : True
+        'cadastrar_produtos': True,
+
     }

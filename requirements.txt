@@ -7,7 +7,7 @@ django-ckeditor==6.5.1
 django-js-asset==2.0.0
 filelock==3.8.0
 keyboard==0.13.5
-Pillow==9.4.0
+Pillow==9.4.0 #manipulação de imagens
 platformdirs==2.5.2
 projeto==1.0.0
 pycodestyle==2.9.1

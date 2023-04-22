@@ -55,6 +55,7 @@ def add_produto(request):
         return redirect(reverse('add_produto'))
 
 
+@has_permission_decorator('cadastrar_produtos')
 def ver_estoque(request):
     if request.method == "GET":
         nome = request.GET.get('nome')
